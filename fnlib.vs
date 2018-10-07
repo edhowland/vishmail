@@ -34,6 +34,7 @@ defn repl(cm, fmt, hf) {
     hf(:action) | %fmt | %println
   }
 }
+repl=curry(:repl)
 
 # read_inbox attempt 2 - shell out to load_inbox script
 defn read_inbox() {
