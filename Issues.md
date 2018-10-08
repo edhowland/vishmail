@@ -15,3 +15,6 @@ If new line is needed, pipe thru %echo at the end of the ppipeline.
 
 
 ## Issue 001: In compose mail, unknown commands causes exception in Vish itself.
+
+Also in reading a message: msg.vs w/unknown key press.
+ How should beep be performed?

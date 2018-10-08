@@ -1,4 +1,7 @@
 # fnlib.vs - library functions
+defn ifelse(p, c, a) { {:p && %c} || %a }
+# should be a macro
+# p: boolean, c - : block for true, a : block for false
 defn dosplit(arr) {
   {empty?(:arr) && []} || [split(head(:arr), '|')] + dosplit(tail(:arr))
 }
@@ -20,7 +23,8 @@ defn help() {
 # fmt - function to format output from key commands
 # hf - movement function 
 defn repl(cm, fmt, hf) {
-  defn beep(h) { println('bad juju'); :h }
+  defn quiet(h) { '' }
+  defn beep() { echo('bad key pressed') | %printe }
 
   cmds=%cm
   help()
@@ -30,7 +34,7 @@ defn repl(cm, fmt, hf) {
 :key == 'q' && break
 
     action=map_key(:key)
-    {undefined?(:cmds[:action]) && action=:beep} || action=:cmds[:action]
+    {undefined?(:cmds[:action]) && action=:quite } || action=:cmds[:action]
     hf(:action) | %fmt | %prints
   }
 }

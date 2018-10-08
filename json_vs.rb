@@ -55,6 +55,11 @@ module Jsonify
       stderr.close unless stderr.nil?
     end
   end
+
+  ## printe(string) - Output to stderr
+  def self.printe(string)
+    $stderr.print(string)
+  end
 end
 
 Dispatch << Jsonify
