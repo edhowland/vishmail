@@ -12,7 +12,7 @@ defn a(m) { mrest(:m) }
   binding()
 }
 # rfmt - format a line of the message
-defn rfmt(l) { chomp(:l) }
+defn rfmt(l) { chomp(:l) | %echo }
 
 defn rshow(fname) { 
   sh("./showm %{:fname}")

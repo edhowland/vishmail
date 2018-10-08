@@ -31,7 +31,7 @@ defn repl(cm, fmt, hf) {
 
     action=map_key(:key)
     {undefined?(:cmds[:action]) && action=:beep} || action=:cmds[:action]
-    hf(:action) | %fmt | %println
+    hf(:action) | %fmt | %prints
   }
 }
 repl=curry(:repl)

@@ -13,4 +13,4 @@ defn mcmds() {
 }
 
 # mfmt - menu formatter
-defn mfmt(l) { head(:l) | %tail | join(' ') }
+defn mfmt(l) { head(:l) | %tail | join(' ') | %echo }
