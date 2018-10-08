@@ -5,7 +5,7 @@ rmove=curry(:rmove)
 defn rkeys() {
   defn j(m) { mrotatel(:m) }
   defn k(m) { mrotater(:m) }
-  defn l(m) { mline(:m) }
+  defn L(m) { mline(:m) }
 defn g(m) { mreset(:m) }
 defn a(m) { mrest(:m) }
   defn q(m) { exit }

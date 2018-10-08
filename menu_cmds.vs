@@ -5,7 +5,7 @@ defn mcmds() {
   defn j(h) { rotatel(:h) }
   defn k(h) { rotater(:h) }
   defn space(h) { fname=%{head(:h) | %head}; rmsg(:fname); :h}
-  defn l(h) { :h }
+  defn L(h) { :h }
 
   # exit ... probably inside repl loop
   defn qh() { exit }
