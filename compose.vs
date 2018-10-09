@@ -20,6 +20,6 @@ defn cfmt(s) {
   :s
 }
 # cerr - handle error condition
-defn cerr(l) { 'bad juju' }
+defn cerr(l) { echo('bad key') | %printe;  ''}
 
 

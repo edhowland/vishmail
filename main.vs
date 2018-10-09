@@ -5,6 +5,7 @@ defn mkeys() {
   defn j(h) { rotatel(:h) }
   defn k(h) { rotater(:h) }
   defn space(h) { fname=%{head(:h) | %head}; rmsg(:fname); :h}
+  defn m(h) { buf=mkbuf(''); cb=cmove(:buf); repl(:ckeys, :cfmt, :cerr, :cb); :h }
   defn L(h) { :h }
 
   # exit ... probably inside repl loop
@@ -15,4 +16,4 @@ defn mkeys() {
 # mfmt - menu formatter
 defn mfmt(l) { head(:l) | %tail | join(' ') | %echo }
 # merr - error function for main menu
-defn merr(l) { [[false, 'bad juju']] }
+defn merr(l) { echo('bad key') | %printe; :l}
