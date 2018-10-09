@@ -13,7 +13,8 @@ defn a(m) { mrest(:m) }
 }
 # rfmt - format a line of the message
 defn rfmt(l) { chomp(:l) | %echo }
-
+# rerr - handle error case
+defn rerr(l) { 'bad juju' }
 defn rshow(fname) { 
   sh("./showm %{:fname}")
 }
@@ -23,5 +24,5 @@ defn rmsg(fname) {
   msg=mkmsg(:buffer)
   bf=rmove(:msg)
 # now recursively call repl
-  repl(:rkeys, :rfmt,:bf) 
+  repl(:rkeys, :rfmt,:rerr, :bf) 
 }

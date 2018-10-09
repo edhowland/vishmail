@@ -19,5 +19,7 @@ cmove=curry(:cmove)
 defn cfmt(s) {
   :s
 }
+# cerr - handle error condition
+defn cerr(l) { 'bad juju' }
 
 

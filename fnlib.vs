@@ -16,26 +16,36 @@ defn map_key(key) {
 defn help() {
   println('q: quit j: down k: up l: line ?: help')
 }
+defn format(fmt, blob, action) {
+  blob(:action) | %fmt | %prints
+}
+format=curry(:format)
 
+defn raction(err, action) {
+    ifelse(undefined?(:action), :{:err}, :{:action})
+}
+raction=curry(:raction)
 
 # the REPL
 # params: cm - key command bindings
 # fmt - function to format output from key commands
+# err : error function compatible with fmt
 # hf - movement function 
-defn repl(cm, fmt, hf) {
-  defn quiet(h) { '' }
-  defn beep() { echo('bad key pressed') | %printe }
-
+defn repl(cm, fmt, err, hf) {
   cmds=%cm
+  fm=format(:fmt, :hf)
+what=raction(:err)
   help()
 
   loop {
     key=%readc
 :key == 'q' && break
 
-    action=map_key(:key)
-    {undefined?(:cmds[:action]) && action=:quite } || action=:cmds[:action]
-    hf(:action) | %fmt | %prints
+    real_key=map_key(:key)
+    action=:cmds[:real_key]
+  action=what(:action)
+
+    fm(:action)
   }
 }
 repl=curry(:repl)

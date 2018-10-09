@@ -1,5 +1,5 @@
 # commands.vs - get commands in binding
-defn mcmds() {
+defn mkeys() {
   defn menu(h) { help(); :h }
 
   defn j(h) { rotatel(:h) }
@@ -14,3 +14,5 @@ defn mcmds() {
 
 # mfmt - menu formatter
 defn mfmt(l) { head(:l) | %tail | join(' ') | %echo }
+# merr - error function for main menu
+defn merr(l) { [[false, 'bad juju']] }

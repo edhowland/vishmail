@@ -2,5 +2,5 @@
 hdrs=dosplit(%read_inbox)
 hf=hmove(:hdrs)
 main=curry(:repl)
-inbox=main(:mcmds, :mfmt)
+inbox=main(:mkeys, :mfmt, :merr)
 
