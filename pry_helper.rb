@@ -1,7 +1,10 @@
 # pry_helper.rb - setups and toools of inspectors, .etc for Pry
 
+
 require_relative 'message'
 require_relative 'compose'
+require_relative 'util'
+
 
 # create_module - temps create all self methods for BufferFFI
 def create_mod

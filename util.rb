@@ -4,8 +4,22 @@ require 'json'
 require 'open3'
 
 
+# util functions used herein
+def to_ctrl(n)
+  ('ctrl_' + (n + 96).chr).to_sym#
+end
 
-module Jsonify
+$keys = Hash.new { false }
+(1..26).to_a.map {|e| [e.chr, to_ctrl(e)] }.map {|k, v| $keys[k] = v }
+
+    [
+      ["\r", :return],
+      ["\t", :tab],
+      ["\u007f", :backspace],
+      ["\e", :escape]
+    ].map {|k, v| $keys[k] = v }
+
+module Util
   def self.json_p(string)
     JSON.parse string
   end
@@ -69,16 +83,9 @@ module Jsonify
 
   ## spec_key key - Given raw key, return key or symbol like :tab
   def self.spec_key(key)
-    h = Hash.new { false }
-    [
-      ["\r", :return],
-      ["\t", :tab],
-      ["\u007f", :backspace],
-      ["\e", :escape]
-    ].map {|k, v| h[k] = v }
-    h[key] || key
+    $keys[key] || key
   end
 end
 
-Dispatch << Jsonify
+Dispatch << Util
 
