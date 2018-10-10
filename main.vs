@@ -5,7 +5,7 @@ defn mkeys() {
   defn j(h) { rotatel(:h) }
   defn k(h) { rotater(:h) }
   defn space(h) { fname=%{head(:h) | %head}; rmsg(:fname); :h}
-  defn m(h) { buf=mkbuf(''); cb=cmove(:buf); repl(:ckeys, :cfmt, :cerr, :cb); :h }
+  defn m(h) { buf=mkbuf(''); cb=cmove(:buf); repl(:cget, :ckeys, :cfmt, :cerr, :cb); :h }
   defn L(h) { :h }
 
 

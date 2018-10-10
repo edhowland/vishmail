@@ -1,4 +1,6 @@
 # compose.vs - compose functions: see compose.rb and buffer_ffi.rb
+# For now: just copy :mget into :cget
+cget=:mget
 defn ckeys() {
   defn h(b) { buf_back(:b); buf_at(:b) }
   defn j(b) { buf_down(:b); buf_line(:b) }
@@ -7,6 +9,8 @@ defn ckeys() {
   defn g(b) { buf_beg(:b); buf_line(:b) }
   defn G(b) { buf_fin(:b); buf_line(:b) }
   defn L(b) { buf_line(:b) }
+
+  q=%mkquit
 
   binding()
 }
