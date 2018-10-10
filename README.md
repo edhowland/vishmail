@@ -29,3 +29,21 @@ interface.
 
 
 
+
+## Installation
+
+You need Ruby version 2.2+ and Vish 0.6.3+.
+
+### Installing Vish
+
+Pleas follow the steps at [Vish](https://github.com/edhowland/vish)
+
+Once you have it downloaded, add the ./vish/bin to your path.
+
+#### Dependancy on Viper buffer class
+
+Currently, VishMail requires Viper version 2 exact version to be installed
+as a folder direct sibling of this folder.
+Eventually, the Buffer class will be extracted and be stand-alone.
+
+

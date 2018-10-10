@@ -1,3 +1,5 @@
+# util.rb - Vish FFI utility functions written in Ruby
+
 require 'json'
 require 'open3'
 
