@@ -7,6 +7,8 @@
 - Issues are numbers in  reverse chrono order.
 - Issue numbers are 3-4 numerals with leading zeros
 
+## Issue 003 - Move map_key from fnlib.vs to main.vs
+
 
 ### Issue 002: Single character output, like for h,l keys in compose add extra newline
 

@@ -8,8 +8,9 @@ defn mkeys() {
   defn m(h) { buf=mkbuf(''); cb=cmove(:buf); repl(:ckeys, :cfmt, :cerr, :cb); :h }
   defn L(h) { :h }
 
-  # exit ... probably inside repl loop
-  defn qh() { exit }
+
+  q=%mkquit
+
   binding()
 }
 
@@ -17,3 +18,8 @@ defn mkeys() {
 defn mfmt(l) { head(:l) | %tail | join(' ') | %echo }
 # merr - error function for main menu
 defn merr(l) { echo('bad key') | %printe; :l}
+
+# mget - get key, map it, then make it a symbol
+defn mget() {
+  %readc | %map_key | %mksym
+}

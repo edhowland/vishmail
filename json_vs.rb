@@ -60,6 +60,10 @@ module Jsonify
   def self.printe(string)
     $stderr.print(string)
   end
+  ## has_key? object, key
+  def self.has_key?(object, key)
+    object.has_key?(key)
+  end
 end
 
 Dispatch << Jsonify

@@ -1,14 +1,20 @@
 # msg.vs - commands to handle reading of message contents - pass to repl()
+# rget - readkey - just clone of :mget
+rget=:mget
+
+
 defn rmove(msg, fn) { fn(:msg) }
 rmove=curry(:rmove)
 
+# rkeys - Read message keys functions
 defn rkeys() {
   defn j(m) { mrotatel(:m) }
   defn k(m) { mrotater(:m) }
   defn L(m) { mline(:m) }
 defn g(m) { mreset(:m) }
-defn a(m) { mrest(:m) }
-  defn q(m) { exit }
+defn A(m) { mrest(:m) }
+  q=%mkquit
+
   binding()
 }
 # rfmt - format a line of the message
@@ -24,5 +30,5 @@ defn rmsg(fname) {
   msg=mkmsg(:buffer)
   bf=rmove(:msg)
 # now recursively call repl
-  repl(:rkeys, :rfmt,:rerr, :bf) 
+  repl(:rget, :rkeys, :rfmt,:rerr, :bf) 
 }

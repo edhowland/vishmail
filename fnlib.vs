@@ -1,7 +1,25 @@
 # fnlib.vs - library functions
-defn ifelse(p, c, a) { {:p && %c} || %a }
 # should be a macro
 # p: boolean, c - : block for true, a : block for false
+defn ifelse(p, c, a) { {:p && %c} || %a }
+# mkhow (:gkey, %keys,  err) - compose these together to create how function
+# that takes no args and returns actual function to run
+defn mkhow(gkey, keys, err) {
+  fetch=->(k) { :keys[:k] }
+  what=raction(:err)
+  ->() {
+    %gkey | %fetch | %what
+  }
+}
+# can we quit?
+defn quit?(action) { has_key?(:action, quitter:) }
+# make a common quit action key for everybody
+defn mkquit() {
+  defn q(x) { quit: }
+  q[quitter:]=true
+  :q
+}
+# split the headers
 defn dosplit(arr) {
   {empty?(:arr) && []} || [split(head(:arr), '|')] + dosplit(tail(:arr))
 }
@@ -31,21 +49,27 @@ raction=curry(:raction)
 # fmt - function to format output from key commands
 # err : error function compatible with fmt
 # hf - movement function 
-defn repl(cm, fmt, err, hf) {
-  cmds=%cm
+defn repl(gkey, keys, fmt, err, hf) {
+# TODO: change :cmd above to :keys
+#  cmds=%cm
   fm=format(:fmt, :hf)
-what=raction(:err)
+how=mkhow(:gkey, %keys, :err)
+#what=raction(:err)
   help()
 
   loop {
-    key=%readc
-:key == 'q' && break
+#    key=%readc
+#    real_key=%gkey
+#:real_key == :q && break
 
-    real_key=map_key(:key)
-    action=:cmds[:real_key]
-  action=what(:action)
+#    real_key=map_key(:key)
+#    action=:cmds[:real_key]
+#  action=what(:action)
 
-    fm(:action)
+#    fm(:action)
+    ac=%how
+  quit?(:ac) && break
+fm(:ac)
   }
 }
 repl=curry(:repl)
