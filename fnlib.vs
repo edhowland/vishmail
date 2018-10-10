@@ -50,23 +50,11 @@ raction=curry(:raction)
 # err : error function compatible with fmt
 # hf - movement function 
 defn repl(gkey, keys, fmt, err, hf) {
-# TODO: change :cmd above to :keys
-#  cmds=%cm
   fm=format(:fmt, :hf)
 how=mkhow(:gkey, %keys, :err)
-#what=raction(:err)
   help()
 
   loop {
-#    key=%readc
-#    real_key=%gkey
-#:real_key == :q && break
-
-#    real_key=map_key(:key)
-#    action=:cmds[:real_key]
-#  action=what(:action)
-
-#    fm(:action)
     ac=%how
   quit?(:ac) && break
 fm(:ac)
