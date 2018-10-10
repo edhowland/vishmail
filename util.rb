@@ -66,6 +66,18 @@ module Jsonify
   def self.has_key?(object, key)
     object.has_key?(key)
   end
+
+  ## spec_key key - Given raw key, return key or symbol like :tab
+  def self.spec_key(key)
+    h = Hash.new { false }
+    [
+      ["\r", :return],
+      ["\t", :tab],
+      ["\u007f", :backspace],
+      ["\e", :escape]
+    ].map {|k, v| h[k] = v }
+    h[key] || key
+  end
 end
 
 Dispatch << Jsonify
