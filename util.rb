@@ -16,7 +16,8 @@ $keys = Hash.new { false }
       ["\r", :return],
       ["\t", :tab],
       ["\u007f", :backspace],
-      ["\e", :escape]
+      ["\e", :escape],
+      [' ', :space]
     ].map {|k, v| $keys[k] = v }
 
 module Util
