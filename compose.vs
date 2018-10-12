@@ -1,4 +1,10 @@
 # compose.vs - compose functions: see compose.rb and buffer_ffi.rb
+# cmove buffer - handles dispatch to for key function passed
+defn cmove(buf, fn) {
+  fn(:buf)
+}
+cmove=curry(:cmove)
+
 # For now: just copy :mget into :cget
 cget=:mget
 defn ckeys() {
@@ -10,15 +16,14 @@ defn ckeys() {
   defn G(b) { buf_fin(:b); buf_line(:b) }
   defn L(b) { buf_line(:b) }
 
+  # Insert mode
+  defn i(b) { printe('insert mode'); insert(cmove(:b)); 'command mode' }
+
   q=%mkquit
 
   binding()
 }
-# cmove buffer - handles dispatch to for key function passed
-defn cmove(buf, fn) {
-  fn(:buf)
-}
-cmove=curry(:cmove)
+
 # cfmt - identity function for repl function
 defn cfmt(s) {
   :s

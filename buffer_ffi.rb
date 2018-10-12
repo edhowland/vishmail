@@ -291,8 +291,8 @@ module BufferFFI
     buf.dirty?()
   end
   ## ins(buf) - 
-  def self.buf_ins(buf)
-    buf.ins()
+  def self.buf_ins(buf, string)
+    buf.ins(string)
   end
   ## ins_at(buf) - 
   def self.buf_ins_at(buf)

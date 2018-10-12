@@ -3,6 +3,9 @@
 require 'json'
 require 'open3'
 
+#require_relative 'key_symbol'
+
+
 
 # util functions used herein
 def to_ctrl(n)
@@ -13,7 +16,7 @@ $keys = Hash.new { false }
 (1..26).to_a.map {|e| [e.chr, to_ctrl(e)] }.map {|k, v| $keys[k] = v }
 
     [
-      ["\r", :return],
+      ["\r", :newline],
       ["\t", :tab],
       ["\u007f", :backspace],
       ["\e", :escape],
@@ -86,6 +89,7 @@ module Util
   def self.spec_key(key)
     $keys[key] || key
   end
+
 end
 
 Dispatch << Util

@@ -5,7 +5,7 @@ defn ifelse(p, c, a) { {:p && %c} || %a }
 # mkhow (:gkey, %keys,  err) - compose these together to create how function
 # that takes no args and returns actual function to run
 defn mkhow(gkey, keys, err) {
-  fetch=->(k) { :keys[:k] }
+  fetch=ifelse(lambda?(:keys), :{ :keys }, :{->(k) { :keys[:k] }})
   what=raction(:err)
   ->() {
     %gkey | %fetch | %what

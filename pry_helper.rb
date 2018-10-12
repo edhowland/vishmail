@@ -1,5 +1,7 @@
 # pry_helper.rb - setups and toools of inspectors, .etc for Pry
 
+require_relative 'key_symbol'
+
 
 require_relative 'message'
 require_relative 'compose'
