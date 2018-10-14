@@ -302,4 +302,8 @@ module BufferFFI
   def self.buf_del(buf)
     buf.del()
   end
+  ## buf_to_s returns Buffer as string
+  def self.buf_to_s(buf)
+    buf.to_s
+  end
 end

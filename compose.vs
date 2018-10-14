@@ -30,5 +30,34 @@ defn cfmt(s) {
 }
 # cerr - handle error condition
 defn cerr(l) { echo('bad key') | %printe;  ''}
+# message parts: to, subject
+defn mkrcpt() {
+  to1=''
+  defn email() { :to1 }
+  defn email!(a) { to1=:a }
+  binding()
+}
+# mksubject - returns binding
+defn mksubject() {
+  subj=''
+defn subject() { :subj }
+  defn subject!(a) { subj=:a }
 
+  binding()
+}
+# mkmessage - gets metadata for message
+defn mkmessage() {
+  print('New message')
+  prints('to: ')
+email=%mkrcpt
+%email.email!(%read)
+prints(' Subject: ')
+subject=%mksubject
+%subject.subject!(%read)
+  buf=mkbuf('')
+bmove=cmove(:buf)
+prints('Message body: Enter q to quit')
+repl(:cget, :ckeys, :cfmt, :cerr, :bmove)
 
+[%email.email, %subject.subject, buf_to_s(:buf)]
+}
