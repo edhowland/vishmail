@@ -52,7 +52,6 @@ raction=curry(:raction)
 defn repl(gkey, keys, fmt, err, hf) {
   fm=format(:fmt, :hf)
 how=mkhow(:gkey, %keys, :err)
-  help()
 
   loop {
     ac=%how

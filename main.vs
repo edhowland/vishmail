@@ -4,8 +4,8 @@ defn mkeys() {
 
   defn j(h) { rotatel(:h) }
   defn k(h) { rotater(:h) }
-  defn space(h) { fname=%{head(:h) | %head}; rmsg(:fname); :h}
-  defn m(h) { x=%mkmessage; :h }
+  defn space(h) { println('Reading message');  fname=%{head(:h) | %head}; rmsg(:fname); println('Back in Inbox'); :h}
+  defn m(h) { x=%mkmessage; println('Back in Inbox'); :h }
   defn L(h) { :h }
 
 
