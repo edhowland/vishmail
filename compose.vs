@@ -58,6 +58,6 @@ subject=%mksubject
 bmove=cmove(:buf)
 prints('Message body: Enter q to quit')
 repl(:cget, :ckeys, :cfmt, :cerr, :bmove)
-
+  snd(:bmove)
 [%email.email, %subject.subject, buf_to_s(:buf)]
 }
