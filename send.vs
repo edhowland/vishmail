@@ -2,7 +2,7 @@
 # q: quit; s: send; d: save as draft; c: cancel and discard draft
 # collect_parts - collects parts: email addr, subject and body in single string
 defn collect_parts(email, subject, body) {
-  "To: %{%email.email}\n" + "Subject: %{%subject.subject}\n\n" + buf_to_s(:body)
+  "Date: %{%now_s}\n" + "To: %{%email.email}\n" + "Subject: %{%subject.subject}\n\n" + buf_to_s(:body)
 }
 
 

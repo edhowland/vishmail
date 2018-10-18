@@ -1,5 +1,7 @@
 # util.rb - Vish FFI utility functions written in Ruby
 
+require 'time'
+
 require 'json'
 require 'open3'
 
@@ -90,6 +92,10 @@ module Util
     $keys[key] || key
   end
 
+  # now_s - Time.now.rfc822 as string
+  def self.now_s
+    Time.now.rfc822.to_s
+  end
 end
 
 Dispatch << Util
