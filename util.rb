@@ -96,6 +96,12 @@ module Util
   def self.now_s
     Time.now.rfc822.to_s
   end
+
+  ## mkfname(template) - returns new numbered filename
+  def self.mkfname(template)
+    num = Dir[template + '.*'].length + 1
+    "#{template}.#{num}"
+  end
 end
 
 Dispatch << Util

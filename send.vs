@@ -15,12 +15,18 @@ defn sfmt(s) { :s }
 send=repl(:mget, :skeys, :sfmt, :merr)
 #
 defn snd(bmove, rcpt, subj) {
+  draft=mkfname('draft')
+  collect_parts(:rcpt, :subj, bmove(->(x) { buf_to_s(:x) })) | fwrite(:draft)
+
 defn skeys() {
   defn q(x) { true }
   q[quitter:] = true
-  defn s(x) { println('sent'); :x }
+  defn s(x) {
+  println('Sending message')
+    sh("./send.sh %{:draft} %{%rcpt.email}")
+    println('Message sent')
+}
   defn d(b) { 
-    collect_parts(:rcpt, :subj, :b) | fwrite('draft')
   'Message saved as draft'
   }
   defn c(x) { println('canceling: discarding draft'); :x }
