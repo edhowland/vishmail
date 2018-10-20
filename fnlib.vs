@@ -2,6 +2,11 @@
 # should be a macro
 # p: boolean, c - : block for true, a : block for false
 defn ifelse(p, c, a) { {:p && %c} || %a }
+
+# wrap the sh internal shell function
+defn sh_out(command) {
+  sh(:command) | %head
+}
 # mkhow (:gkey, %keys,  err) - compose these together to create how function
 # that takes no args and returns actual function to run
 defn mkhow(gkey, keys, err) {
@@ -63,7 +68,7 @@ repl=curry(:repl)
 
 # read_inbox attempt 2 - shell out to load_inbox script
 defn read_inbox() {
-  sh('./load_inbox') | xmit(lines:)
+  sh_out('./load_inbox.sh') | xmit(lines:)
 }
 # hmove - take a header arrary and rotate in some direction
 defn hmove(hs, fn) {

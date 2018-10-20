@@ -68,14 +68,24 @@ module Util
   ## sh command - Run the command through the shell and gather stdout and return it
   def self.sh(command)
     begin
-      stdin, stdout, stderr = Open3.popen3(command)
-      stdout.read
+      stdin, stdout, stderr, status = Open3.popen3(command)
+      out=stdout.read
+      err=stderr.read
+      status = status.value.exitstatus
     rescue => err
     err.message
     ensure
       stdout.close unless stdout.nil?
       stderr.close unless stderr.nil?
     end
+    open('sh.log', 'a+') do |f|
+      f.puts "command: #{command}"
+      f.puts "output: #{out}"
+      f.puts "error: #{err}"
+      f.puts "status: #{status}"
+    end
+
+    [out, err, status]
   end
 
   ## printe(string) - Output to stderr
@@ -101,6 +111,11 @@ module Util
   def self.mkfname(template)
     num = Dir[template + '.*'].length + 1
     "#{template}.#{num}"
+  end
+
+  # last array - return last element of array
+  def self.last(array)
+    array.last
   end
 end
 

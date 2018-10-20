@@ -1,5 +1,9 @@
 # send.vs - Handles operations for sending and saving mail
 # q: quit; s: send; d: save as draft; c: cancel and discard draft
+# formatters
+defn fmt_send(draft, rcpt) {
+  "./send.sh " + :draft + " " + %rcpt.email
+}
 defn fmt_to(fn) { "To: %{%fn.email}\n" }
 defn fmt_date(fn) { "Date: %{%fn}\n" }
 defn fmt_subject(fn) { "Subject: %{%fn.subject}\n" }
@@ -23,7 +27,7 @@ defn skeys() {
   q[quitter:] = true
   defn s(x) {
   println('Sending message')
-    sh("./send.sh %{:draft} %{%rcpt.email}")
+    sh(fmt_send(:draft, :rcpt))
     println('Message sent')
 }
   defn d(b) { 
