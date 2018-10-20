@@ -41,7 +41,8 @@ defn skeys() {
   binding()
 }
 
-  println('q: quit. s: send. d: Discard draft. c: cancel, leaves draft')
+#  println('q: quit. s: send. d: Discard draft. c: cancel, leaves draft')
+  %{ _x=%skeys; %_x.menu(1) }
   repl(:mget, :skeys, :sfmt, :merr, :bmove)
 }
 
