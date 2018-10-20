@@ -3,6 +3,7 @@ defn _ikeys() {
   defn space(b) { buf_ins(:b, ' '); ' ' }
   defn newline(b) { buf_ins(:b, "\n"); "\n" }
   defn tab(b) { buf_ins(:b, "  "); 'tab' }
+  defn backspace(b) { x=buf_del(:b); "delete %{:x}" }
   defn self_insert(k, b) { buf_ins(:b, :k); :k }
   self_insert=curry(:self_insert)
 
