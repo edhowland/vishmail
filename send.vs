@@ -31,15 +31,17 @@ defn skeys() {
     println('Message sent')
 }
   defn d(b) { 
-  'Message saved as draft'
+    frm(:draft)
+    println(:draft + ' file deleted')
   }
-  defn c(x) { println('canceling: discarding draft'); :x }
+  defn c(x) { true }
   c[quitter:]=true
+  defn menu(x) {println('q: quit. s: send. d: Discard draft. c: cancel, leaves draft') }
 
   binding()
 }
 
-  println('q: quit. s: send. d: save as draft. c: cancel, discard draft')
+  println('q: quit. s: send. d: Discard draft. c: cancel, leaves draft')
   repl(:mget, :skeys, :sfmt, :merr, :bmove)
 }
 
