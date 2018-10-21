@@ -28,3 +28,9 @@ task :compile => [:allfiles] do
   save(compiler,  'ibx.vsc')
 
 end
+
+
+task :clean do
+  rm_f 'allfiles.vs'
+  rm_f 'ibx.vsc'
+end
