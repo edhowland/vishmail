@@ -47,3 +47,35 @@ as a folder direct sibling of this folder.
 Eventually, the Buffer class will be extracted and be stand-alone.
 
 
+
+## Initial setup
+
+In order to get the Rakefile to build the ibx.rb and/or ibx.vsc files
+you need to make a valid vishbase.rb - to tell rake where the vishc Ruby file
+can be loaded.
+
+So, do these steps:
+
+1. Edit setpath.sh to add the /path/to/vish/bin into your PATH environment
+2. Run this code:
+
+```
+$ vishc -R -o vishbase.rb -r ./util.rb --template base.erb vishbase.vs
+```
+
+3. Test it out
+
+```
+$ ./vishbase.rb
+/home/edh/dev/vish
+
+$ ./vishbase.rb
+```
+
+Now, you can do:
+
+```
+$ rake compile_rb
+$ ./ibx.rb
+...
+```
