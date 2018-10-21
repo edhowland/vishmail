@@ -26,10 +26,18 @@ $keys = Hash.new { false }
     ].map {|k, v| $keys[k] = v }
 
 module Util
+  ## vish_base(trail) - returns path for base of Vish stuff with optional trailing part
+    ### Add to Builtins
+  def self.vish_base(trail='')
+    vish_path(trail)
+  end
+  ## json string - parses json string
+  ### Add to Builtins
   def self.json_p(string)
     JSON.parse string
   end
   ## chompstring - chomps a string
+  ### Add to Builtins
   def self.chomp(string)
     string.chomp
   end
@@ -37,10 +45,13 @@ module Util
   def self.println(string)
     puts string
   end
+  ## join array, sep - joins array with sep or empty string
+  ### Add to Builtins
   def self.join(arr, sep)
     arr.join(sep)#
   end
   ## split string, sep - array  
+  ### Add to Builtins
   def self.split(string, sep)
     string.split(sep)
   end
@@ -66,6 +77,7 @@ module Util
   end
 
   ## sh command - Run the command through the shell and gather stdout and return it
+  ### Add to Builtins
   def self.sh(command)
     begin
       stdin, stdout, stderr, status = Open3.popen3(command)
