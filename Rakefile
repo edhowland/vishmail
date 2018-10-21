@@ -34,3 +34,8 @@ task :clean do
   rm_f 'allfiles.vs'
   rm_f 'ibx.vsc'
 end
+
+task :clean_logs do
+  rm_f Dir['*.log']
+end
+
