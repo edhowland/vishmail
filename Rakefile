@@ -22,11 +22,6 @@ end
 
 
 
-task :ok do
-#  sh('echo hi', silent: true)
-#  quiet_sh('echo hello')
-  sh('echo hello > ok.out', verbose: false)
-end
 
 def checkvs(vs)
   check(File.read(vs)).zero? || abort
