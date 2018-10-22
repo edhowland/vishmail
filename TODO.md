@@ -1,5 +1,10 @@
 # Todo list for VishMail
 
+## Todo: Extract out the Buffer class from the Viper package.
+
+Add a new ./lib/buffer folder w/ buffer.rb in there
+
+
 ## Todo  Add mkrepl task in Rakefile
 
 Will create ibx.sh shell script.
