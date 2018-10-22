@@ -3,6 +3,8 @@
 ##require_relative 'key_symbol'
 
 
+require_relative 'lib/vishmail'
+
 require_relative 'message'
 require_relative 'compose'
 require_relative 'util'

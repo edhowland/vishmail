@@ -81,7 +81,9 @@ task :compile_rb=> ['allfiles.vs'] do
     abort("Failed to compile #{t.source}") unless result
 
   @options[:ofile] = 'ibx.rb'
-@options[:requires] = rbfiles
+  @options[:requires] = rbfiles
+  @options[:includes] += ['./includes/options.rb']
+
   render(compiler, @options)
 end
 
