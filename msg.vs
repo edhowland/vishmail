@@ -22,7 +22,7 @@ defn rfmt(l) { chomp(:l) | %echo }
 # rerr - handle error case
 defn rerr(l) { 'bad juju' }
 defn rshow(fname) { 
-  sh_out("./showm %{:fname}")
+  sh_out("./showm.sh %{:fname}")
 }
 defn rmsg(fname) {
   contents=rshow(:fname)

@@ -79,3 +79,25 @@ $ rake compile_rb
 $ ./ibx.rb
 ...
 ```
+
+
+## Making a REPL version
+
+```
+$ rake compile_sh
+$ ./ibx.sh
+
+....
+```
+
+If you type 'q' at the top-level menu, you will be dropped into the Vish REPL.
+To return to the program:
+
+```
+vish> %ibx
+...
+
+q
+vish> exit
+$
+```
