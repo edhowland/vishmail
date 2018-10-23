@@ -69,6 +69,14 @@ end
 desc 'check: checks syntax of Ruby and Vish sources'
 task :check => [:check_rb, :check_vs]
 
+task :compile_sh => ['allfiles.vs'] do
+  @options[:ofile] = 'ibx.sh'
+  @options[:requires] = rbfiles
+  @options[:template] = './templates/ibx.sh.erb'
+  c = VishCompiler.new ''
+  render(c)
+end
+
 
 task :compile => ['allfiles.vs'] do
   compiler, result = compile(compose(File.read('allfiles.vs')))
@@ -91,6 +99,7 @@ task :clean do
   rm_f 'allfiles.vs'
   rm_f 'ibx.vsc'
   rm_f 'ibx.rb'
+  rm_f 'ibx.sh'
   Dir['*.err'].each {|e| rm_f e }
 end
 

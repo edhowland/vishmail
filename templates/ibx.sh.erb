@@ -1,0 +1,4 @@
+#!/bin/bash
+# ibx.sh - run ibx : VVishMail in Vish REPL
+ivs <%= opt[:requires].map {|rb| "-r #{rb}" }.join(' ') %> allfiles.vs
+
