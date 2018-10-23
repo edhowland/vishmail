@@ -1,4 +1,10 @@
+
 # Todo list for VishMail
+## Todo: Move vish_base back into vish/lib/runtime/builtins.rb
+
+
+Rebuild vishbase.rb
+
 
 ## Todo: Figure a way to recreate vishbase.rb from base.erb
 

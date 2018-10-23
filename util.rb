@@ -36,25 +36,12 @@ module Util
   def self.json_p(string)
     JSON.parse string
   end
-  ## chompstring - chomps a string
-  ### Add to Builtins
-  def self.chomp(string)
-    string.chomp
-  end
+
   ## println string - puts a string w/trailing newline
   def self.println(string)
     puts string
   end
-  ## join array, sep - joins array with sep or empty string
-  ### Add to Builtins
-  def self.join(arr, sep)
-    arr.join(sep)#
-  end
-  ## split string, sep - array  
-  ### Add to Builtins
-  def self.split(string, sep)
-    string.split(sep)
-  end
+
   ## iread - read lines from $stdin
   def self.iread()
     $stdin.read.lines
