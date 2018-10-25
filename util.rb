@@ -26,11 +26,7 @@ $keys = Hash.new { false }
     ].map {|k, v| $keys[k] = v }
 
 module Util
-  ## vish_base(trail) - returns path for base of Vish stuff with optional trailing part
-    ### Add to Builtins
-  def self.vish_base(trail='')
-    vish_path(trail)
-  end
+
   ## json string - parses json string
   ### Add to Builtins
   def self.json_p(string)
@@ -63,22 +59,15 @@ module Util
     h.has_value?(v)
   end
 
-  ## sh command - Run the command through the shell and gather stdout and return it
-  ### Add to Builtins
-  def self.sh(command)
-    begin
-      stdin, stdout, stderr, status = Open3.popen3(command)
-      out=stdout.read
-      err=stderr.read
-      status = status.value.exitstatus
-    rescue => err
-    err.message
-    ensure
-      stdout.close unless stdout.nil?
-      stderr.close unless stderr.nil?
-    end
+  ## logsh command - Run the command through the shell and gather stdout and return it
+  # Takes stdin, command
+  # Returns tuple of [stdout, stderr, status]
+  # Capture stuff in sh.log
+  def self.logsh(inp, command)
+    out, err, status = Builtins.shx(inp, command)
     open('sh.log', 'a+') do |f|
       f.puts "command: #{command}"
+      f.puts "stdin: #{inp.to_s}"
       f.puts "output: #{out}"
       f.puts "error: #{err}"
       f.puts "status: #{status}"

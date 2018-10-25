@@ -5,7 +5,7 @@ defn ifelse(p, c, a) { {:p && %c} || %a }
 
 # wrap the sh internal shell function
 defn sh_out(command) {
-  sh(:command) | %head
+  logsh('', :command) | %head
 }
 # mkhow (:gkey, %keys,  err) - compose these together to create how function
 # that takes no args and returns actual function to run
